@@ -1,68 +1,42 @@
-import { motion } from 'framer-motion';
-
-const About = () => {
+export default function About() {
   return (
-    <section id="about" className="section-padding">
-      <div className="container-padding mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="grid md:grid-cols-2 gap-12 items-center"
-        >
-          {/* Image Section */}
-          <div className="relative">
-            <div className="aspect-square rounded-lg overflow-hidden">
-              <img
-                src="/your-image.jpg"
-                alt="Profile"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="absolute inset-0 border-2 border-secondary rounded-lg transform translate-x-4 translate-y-4 -z-10" />
-          </div>
+    <section id="about" className="border-t border-border">
+      <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
+        <p className="section-label">About</p>
 
-          {/* Content Section */}
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              About <span className="text-secondary">Me</span>
-            </h2>
-            <p className="text-tertiary mb-6">
-              I'm a passionate Full Stack Developer with a strong foundation in
-              web technologies and a keen eye for creating intuitive user
-              experiences. With expertise in both frontend and backend
-              development, I strive to build applications that are not only
-              visually appealing but also performant and scalable.
-            </p>
-            <p className="text-tertiary mb-8">
-              My journey in web development started with a curiosity about how
-              things work on the internet, which led me to dive deep into
-              various technologies and frameworks. I enjoy solving complex
-              problems and turning ideas into reality through clean and
-              efficient code.
-            </p>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Education</h3>
-                <p className="text-tertiary">
-                  B.S. in Computer Science<br />
-                  University Name
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Experience</h3>
-                <p className="text-tertiary">
-                  X+ years of professional<br />
-                  development experience
-                </p>
-              </div>
+        <div className="space-y-5 text-muted leading-relaxed text-base md:text-lg max-w-2xl">
+          <p>
+            I&apos;m a{" "}
+            <span className="text-ink font-medium">Frontend Developer</span> with 2.5 years
+            of professional experience building responsive, accessible web applications.
+          </p>
+          <p>
+            My focus is the intersection of engineering precision and thoughtful design —
+            pixel-perfect implementations, optimised rendering, and component architectures
+            that scale. My primary tools are{" "}
+            <span className="font-mono text-ink text-sm">TypeScript</span>,{" "}
+            <span className="font-mono text-ink text-sm">React</span>, and{" "}
+            <span className="font-mono text-ink text-sm">Next.js</span>.
+          </p>
+          <p>
+            Based in Ahmedabad, India. B.Tech in Information Technology from Silver Oak
+            University. Open to remote roles.
+          </p>
+        </div>
+
+        {/* Stats */}
+        <div className="flex gap-8 mt-10">
+          {[
+            { value: "2.5+", label: "Years experience" },
+            { value: "20+",  label: "Projects shipped" },
+          ].map(({ value, label }) => (
+            <div key={label}>
+              <p className="font-display text-2xl font-bold text-ink">{value}</p>
+              <p className="text-sm text-muted font-mono mt-0.5">{label}</p>
             </div>
-          </div>
-        </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
-};
-
-export default About; 
+}

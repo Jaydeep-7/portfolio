@@ -1,0 +1,29 @@
+---
+title: "Building a design system with React and Tailwind"
+date: "2026-03-15"
+summary: "How I approached building a consistent, scalable component library using React, TypeScript, and Tailwind CSS."
+---
+
+Building a design system is one of those projects that feels unnecessary until the day you desperately need it.
+
+## The problem
+
+Working across multiple projects, I kept recreating the same components — buttons, form inputs, modals — each slightly different. Copy-paste worked until it didn't. One project would get a fix, the others wouldn't.
+
+## The approach
+
+I started with a simple constraint: **no component should accept a `className` prop**. Every visual variant had to be an explicit prop. This forced intentional API design upfront.
+
+```tsx
+// Instead of this
+<Button className="bg-blue-500 text-white px-4 py-2">Submit</Button>
+
+// We do this
+<Button variant="primary" size="md">Submit</Button>
+```
+
+## What I learnt
+
+The hardest part wasn't the code — it was writing the docs. Storybook helped, but the real test was whether a teammate could use a component without reading the source.
+
+Start small. A button, an input, a badge. Resist the urge to build everything before using it in a real project.

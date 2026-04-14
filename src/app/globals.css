@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base ────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #FAFAF8;
+  color: #18181B;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #FAFAF8; }
+::-webkit-scrollbar-thumb { background: #D4D4D8; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #A1A1AA; }
+
+/* ─── Selection ───────────────────────────────────────────────────────────── */
+::selection {
+  background-color: #EEF2FF;
+  color: #4F46E5;
+}
+
+/* ─── Focus ───────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #4F46E5;
+  outline-offset: 3px;
+}
+
+/* ─── Utilities ───────────────────────────────────────────────────────────── */
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  /* Section layout */
+  .section-base {
+    @apply py-20 md:py-28 px-6 md:px-12 lg:px-0;
+  }
+
+  /* Section label — small eyebrow text */
+  .section-label {
+    @apply font-mono text-accent text-xs tracking-[0.2em] uppercase mb-3;
+  }
+
+  /* Section heading */
+  .section-heading {
+    @apply font-display font-bold text-ink text-balance;
+    font-size: 1.875rem; /* text-3xl */
+    line-height: 1.4;
+  }
+
+  @media (min-width: 768px) {
+    .section-heading {
+      font-size: 2.25rem; /* text-4xl — font-size only, no line-height override */
+    }
+  }
+
+  /* Prose-width container */
+  .content-width {
+    @apply max-w-3xl mx-auto;
+  }
+
+  /* Project / card surface */
+  .card {
+    @apply bg-surface border border-border rounded-xl p-6
+           hover:border-zinc-300 transition-colors duration-200;
+  }
+
+  /* Tech badge */
+  .tech-tag {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-mono rounded-md
+           bg-accent-light text-accent border border-indigo-100;
+  }
+
+  /* Primary CTA */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium
+           bg-ink text-page rounded-lg hover:bg-zinc-700
+           transition-colors duration-200;
+  }
+
+  /* Secondary / outline CTA */
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium
+           border border-border text-ink rounded-lg hover:border-zinc-400
+           hover:bg-surface transition-colors duration-200;
+  }
+}
+
+/* ─── Blog prose styles ───────────────────────────────────────────────────── */
+.prose-editorial {
+  color: #18181B;
+  line-height: 1.8;
+}
+
+.prose-editorial h1,
+.prose-editorial h2,
+.prose-editorial h3 {
+  font-family: var(--font-syne), Syne, sans-serif;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #18181B;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+.prose-editorial h1 { font-size: 2rem; }
+.prose-editorial h2 { font-size: 1.5rem; }
+.prose-editorial h3 { font-size: 1.25rem; }
+
+.prose-editorial p { margin-bottom: 1.25em; }
+
+.prose-editorial a {
+  color: #4F46E5;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose-editorial a:hover { color: #4338CA; }
+
+.prose-editorial code {
+  font-family: var(--font-fira), "Fira Code", monospace;
+  font-size: 0.875em;
+  background: #F4F4F5;
+  border: 1px solid #E4E4E7;
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+
+.prose-editorial pre {
+  background: #18181B;
+  color: #F4F4F5;
+  border-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.5em 0;
+  font-family: var(--font-fira), "Fira Code", monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.prose-editorial pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.prose-editorial blockquote {
+  border-left: 3px solid #4F46E5;
+  padding-left: 1rem;
+  color: #71717A;
+  font-style: italic;
+  margin: 1.5em 0;
+}
+
+.prose-editorial ul,
+.prose-editorial ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25em;
+}
+
+.prose-editorial li { margin-bottom: 0.4em; }
+
+.prose-editorial hr {
+  border: none;
+  border-top: 1px solid #E4E4E7;
+  margin: 2em 0;
+}
