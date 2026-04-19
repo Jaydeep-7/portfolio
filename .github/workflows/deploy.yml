@@ -1,4 +1,4 @@
-name: Deploy React App to S3 + CloudFront
+name: Deploy Next.js Static Site to S3 + CloudFront
 
 on:
   push:
@@ -21,12 +21,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build React App
+      - name: Build Next.js static export
         run: npm run build
 
       - name: Sync to S3
         run: |
-          aws s3 sync ./dist s3://${{ secrets.AWS_S3_BUCKET }} \
+          aws s3 sync ./out s3://${{ secrets.AWS_S3_BUCKET }} \
             --delete \
             --cache-control max-age=86400
           aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
