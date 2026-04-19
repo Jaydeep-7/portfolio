@@ -1,0 +1,31 @@
+---
+title: "What I look for in a code review"
+date: "2026-01-20"
+summary: "Code review is mostly about trust and shared understanding. Here's how I try to make mine useful rather than just a style debate."
+---
+
+I've been on both sides of a lot of code reviews. Here's what I've settled on.
+
+## The first read is for understanding
+
+Before commenting on anything, I try to understand *what* the code is doing and *why* it was written this way. If I can't figure out the why, that's the first comment — not a change request, just a question.
+
+## Correctness before style
+
+Does this code do what it claims to do? Edge cases? Error states? I check these before I notice whether a function name could be improved.
+
+## Separate concerns
+
+I try to tag my comments:
+
+- **nit:** Optional, stylistic. Take it or leave it.
+- **suggest:** I think this is better, but I'm not blocking on it.
+- **block:** This needs to change before merge.
+
+It removes ambiguity. The author knows what matters.
+
+## What I don't do
+
+I don't comment on things covered by the linter. If ESLint would catch it, it shouldn't be a review comment — it should be a lint rule.
+
+Code review isn't a gatekeeping ritual. It's the best tool I know for spreading context across a team.

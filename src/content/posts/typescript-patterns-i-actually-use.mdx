@@ -1,0 +1,45 @@
+---
+title: "TypeScript patterns I actually use"
+date: "2026-02-08"
+summary: "A short list of TypeScript patterns that show up in my code every week — nothing academic, just things that solve real problems."
+---
+
+There are a lot of TypeScript guides. Most of them cover the full language. This is not that — it's just the handful of patterns I reach for constantly.
+
+## Discriminated unions for state
+
+Instead of booleans for loading/error states:
+
+```ts
+type AsyncState<T> =
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "success"; data: T }
+  | { status: "error"; message: string };
+```
+
+The `switch` on `status` is then exhaustive. TypeScript narrows correctly in each branch.
+
+## `satisfies` over `as`
+
+When you want TypeScript to verify a value matches a type without widening it:
+
+```ts
+const config = {
+  theme: "light",
+  lang: "en",
+} satisfies Partial<AppConfig>;
+```
+
+`as` is a cast — you're telling the compiler to trust you. `satisfies` is a check — you're asking the compiler to verify you.
+
+## Template literal types for string contracts
+
+Useful for route shapes, event names, anything string-keyed:
+
+```ts
+type Route = `/${string}`;
+type EventName = `on${Capitalize<string>}`;
+```
+
+Small wins, real signal.
