@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Writing — Jaydeep Sindhav",
-  description: "Thoughts on frontend development, TypeScript, and software craft.",
+  description: "Practical notes on frontend engineering, product execution, and TypeScript patterns for teams and startup builders.",
 };
 
 export default function BlogPage() {
@@ -15,10 +15,10 @@ export default function BlogPage() {
       <header className="mb-14">
         <p className="section-label">Writing</p>
         <h1 className="font-display text-3xl md:text-4xl font-bold text-ink !leading-snug">
-          Thoughts &amp; notes
+          Frontend lessons for shipping better products
         </h1>
         <p className="text-muted mt-3 text-base">
-          Frontend development, TypeScript, and the occasional opinion.
+          Practical notes on frontend engineering, product decisions, and TypeScript patterns from real-world builds.
         </p>
       </header>
 

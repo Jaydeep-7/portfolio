@@ -9,11 +9,12 @@ export default function Contact() {
     <section id="connect" className="border-t border-border">
       <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
         <p className="section-label">Connect</p>
-        <h2 className="section-heading mb-4">Get in touch</h2>
+        <h2 className="section-heading mb-4">Hiring or building? Let&apos;s talk.</h2>
 
         <p className="text-muted text-base md:text-lg leading-relaxed max-w-xl mb-10">
-          I&apos;m open to full-time roles and freelance projects. If you have something
-          in mind, just send an email — I typically reply within a day.
+          Whether you&apos;re a recruiter hiring for a frontend role or a founder/client launching
+          a product, I can help you move from idea to high-quality execution. I usually reply
+          within 24 hours.
         </p>
 
         {/* Email */}
@@ -34,7 +35,7 @@ export default function Contact() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-60" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
           </span>
-          Available — typical reply within 24 hours
+          Open to full-time roles, startup builds, and selective consulting work
         </div>
 
         {/* Social links */}

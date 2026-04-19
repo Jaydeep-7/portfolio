@@ -18,9 +18,9 @@ export default {
         "accent-light": "#EEF2FF",   // indigo-50 — accent bg tint
       },
       fontFamily: {
-        sans:    ["var(--font-inter)",  "Inter",     "sans-serif"],
-        display: ["var(--font-syne)",   "Syne",      "sans-serif"],
-        mono:    ["var(--font-fira)",   "Fira Code", "monospace"],
+        sans:    ["var(--font-manrope)",    "Manrope",       "sans-serif"],
+        display: ["var(--font-newsreader)", "Newsreader",    "serif"],
+        mono:    ["var(--font-jetbrains)",  "JetBrains Mono", "monospace"],
       },
     },
   },

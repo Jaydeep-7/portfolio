@@ -13,14 +13,14 @@ export default function Writing() {
         <div className="flex items-baseline justify-between mb-10">
           <div>
             <p className="section-label">Writing</p>
-            <h2 className="section-heading">Recent posts</h2>
+            <h2 className="section-heading">Playbooks for teams and product builders</h2>
           </div>
           <Link
             href="/blog"
             className="inline-flex items-center gap-1 text-sm font-medium text-muted
                        hover:text-ink transition-colors duration-150"
           >
-            All posts
+            Browse all posts
             <ArrowRightIcon className="w-3.5 h-3.5" />
           </Link>
         </div>

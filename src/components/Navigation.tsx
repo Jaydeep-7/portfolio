@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { Bars3Icon, EnvelopeIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -39,58 +41,123 @@ const SOCIAL_LINKS = [
   },
 ];
 
+const EMAIL = "jaydeep.sindhav.03@gmail.com";
+
 export default function Navigation() {
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const isActive = (href: string) => {
     if (href === "/blog") return pathname.startsWith("/blog");
     return false;
   };
 
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMenuOpen(false);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isMenuOpen]);
+
   return (
     <header className="sticky top-0 z-50 bg-page/90 backdrop-blur-sm border-b border-border">
-      <nav className="max-w-3xl mx-auto px-6 h-14 flex items-center justify-between">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="font-display font-bold text-ink hover:text-accent transition-colors duration-200"
-        >
-          Jaydeep Sindhav
-        </Link>
+      <nav className="max-w-3xl mx-auto px-4 sm:px-6">
+        <div className="h-14 flex items-center justify-between gap-3">
+          <Link
+            href="/"
+            className="font-display font-bold text-ink hover:text-accent transition-colors duration-200"
+          >
+            Jaydeep Sindhav
+          </Link>
 
-        {/* Nav links + social */}
-        <div className="flex items-center gap-5">
-          {/* Text nav links — hidden on mobile */}
-          <div className="hidden sm:flex items-center gap-5">
+          <div className="flex items-center gap-1 sm:gap-2">
+            <div className="hidden sm:flex items-center gap-2">
+              {NAV_LINKS.map(({ label, href }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  className={`inline-flex min-h-10 items-center px-2.5 text-sm font-medium rounded-md transition-colors duration-200
+                    ${isActive(href)
+                      ? "text-accent"
+                      : "text-muted hover:text-ink"
+                    }`}
+                >
+                  {label}
+                </Link>
+              ))}
+
+              <a
+                href={`mailto:${EMAIL}`}
+                className="hidden md:inline-flex min-h-10 items-center gap-1.5 rounded-md border border-border px-3 text-sm font-medium text-ink hover:border-zinc-400 hover:bg-surface transition-colors duration-200"
+              >
+                <EnvelopeIcon className="w-4 h-4" />
+                Let&apos;s talk
+              </a>
+            </div>
+
+            <div className="flex items-center gap-1 sm:pl-2 sm:border-l sm:border-border">
+              {SOCIAL_LINKS.map(({ label, href, icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-md text-muted hover:text-ink hover:bg-surface transition-colors duration-200"
+                >
+                  {icon}
+                </a>
+              ))}
+            </div>
+
+            <button
+              type="button"
+              className="sm:hidden inline-flex h-10 w-10 items-center justify-center rounded-md text-muted hover:text-ink hover:bg-surface transition-colors duration-200"
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-controls="mobile-nav"
+              aria-expanded={isMenuOpen}
+              onClick={() => setIsMenuOpen((open) => !open)}
+            >
+              {isMenuOpen ? <XMarkIcon className="w-5 h-5" /> : <Bars3Icon className="w-5 h-5" />}
+            </button>
+          </div>
+        </div>
+
+        <div
+          id="mobile-nav"
+          className={`sm:hidden overflow-hidden transition-[max-height,opacity] duration-200 ${isMenuOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"}`}
+        >
+          <div className="border-t border-border py-3 space-y-1">
             {NAV_LINKS.map(({ label, href }) => (
               <Link
                 key={label}
                 href={href}
-                className={`text-sm font-medium transition-colors duration-200
+                onClick={() => setIsMenuOpen(false)}
+                className={`inline-flex w-full items-center rounded-md px-3 py-2.5 text-sm font-medium transition-colors duration-200
                   ${isActive(href)
-                    ? "text-accent"
-                    : "text-muted hover:text-ink"
+                    ? "text-accent bg-accent-light"
+                    : "text-muted hover:text-ink hover:bg-surface"
                   }`}
               >
                 {label}
               </Link>
             ))}
-          </div>
 
-          {/* Social icons — always visible */}
-          <div className="flex items-center gap-3 sm:pl-4 sm:border-l sm:border-border">
-            {SOCIAL_LINKS.map(({ label, href, icon }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="text-muted hover:text-ink transition-colors duration-200"
-              >
-                {icon}
-              </a>
-            ))}
+            <a
+              href={`mailto:${EMAIL}`}
+              className="mt-2 inline-flex w-full items-center justify-center gap-1.5 rounded-md border border-border bg-surface px-3 py-2.5 text-sm font-medium text-ink hover:border-zinc-400 hover:bg-zinc-100 transition-colors duration-200"
+            >
+              <EnvelopeIcon className="w-4 h-4" />
+              Start a conversation
+            </a>
           </div>
         </div>
       </nav>

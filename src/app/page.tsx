@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 
 export default function Page() {
   return (
-    <>
+    <div className="experimental-minimal">
       <Hero />
       <About />
       <Projects />
@@ -16,6 +16,6 @@ export default function Page() {
       <Writing />
       <Contact />
       <Footer />
-    </>
+    </div>
   );
 }

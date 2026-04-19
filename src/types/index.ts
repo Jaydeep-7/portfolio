@@ -3,6 +3,9 @@ export interface Project {
   title: string;
   description: string;
   image?: string;
+  snapshot?: string;
+  role?: string;
+  year?: string;
   technologies: string[];
   githubUrl: string;
   liveUrl: string;

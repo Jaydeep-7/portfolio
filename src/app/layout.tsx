@@ -1,32 +1,34 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Syne, Fira_Code } from "next/font/google";
+import { Manrope, Newsreader, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-manrope",
   display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
-const syne = Syne({
+const newsreader = Newsreader({
   subsets: ["latin"],
-  variable: "--font-syne",
+  variable: "--font-newsreader",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
-const firaCode = Fira_Code({
+const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-fira",
+  variable: "--font-jetbrains",
   display: "swap",
-  weight: ["300", "400", "500"],
+  weight: ["300", "400", "500", "700"],
 });
 
 export const metadata: Metadata = {
   title: "Jaydeep Sindhav — Frontend Developer",
   description:
-    "Portfolio of Jaydeep Sindhav — Frontend Developer specialising in React, Next.js, and TypeScript.",
+    "Frontend Developer helping hiring teams and startup founders ship fast, accessible, production-ready web products with React, Next.js, and TypeScript.",
   keywords: [
     "Frontend Developer",
     "React",
@@ -39,7 +41,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Jaydeep Sindhav — Frontend Developer",
     description:
-      "Frontend Developer specialising in React, Next.js, and TypeScript.",
+      "Frontend Developer helping teams and founders ship fast, accessible, production-ready web products.",
     url: "https://portfolio.jaydeepsindhav.me",
     siteName: "Jaydeep Sindhav",
     locale: "en_US",
@@ -48,7 +50,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Jaydeep Sindhav — Frontend Developer",
-    description: "Frontend Developer specialising in React, Next.js, and TypeScript.",
+    description: "Frontend Developer helping teams and founders ship fast, accessible, production-ready web products.",
     creator: "@jaydeepsindhav",
   },
   robots: { index: true, follow: true },
@@ -66,7 +68,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${syne.variable} ${firaCode.variable}`}
+      className={`${manrope.variable} ${newsreader.variable} ${jetBrainsMono.variable}`}
       suppressHydrationWarning
     >
       <body className="bg-page text-ink font-sans antialiased">
